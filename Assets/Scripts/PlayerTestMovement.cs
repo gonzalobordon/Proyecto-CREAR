@@ -15,6 +15,8 @@ public class PlayerTestMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetAxis("Horizontal")>0) pj.localScale = new Vector2(1,1);
+		if(Input.GetAxis("Horizontal")<0) pj.localScale = new Vector2(-1,1);
 		if(Input.GetAxis("Horizontal")!=0)anim.SetBool("run",true);
 		else anim.SetBool("run",false);
 		pj.position = new Vector2(pj.position.x + Input.GetAxis("Horizontal")*(speed/10),pj.position.y);
