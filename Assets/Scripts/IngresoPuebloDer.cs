@@ -19,6 +19,7 @@ public class IngresoPuebloDer : MonoBehaviour {
 		if (other.gameObject.tag == "Player")
 		{
 			SceneManager.LoadScene("Pueblo",LoadSceneMode.Single);
+			other.transform.position = new Vector2(-14,-1.25f);
 		}
 	}
 }
