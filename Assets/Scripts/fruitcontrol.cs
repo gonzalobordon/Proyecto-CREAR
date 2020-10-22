@@ -9,6 +9,7 @@ public class fruitcontrol : MonoBehaviour {
 	public float rango = 7f;
 	public float bpm;
 	public float timing;
+	public int totalcount = 150;
 	public int cont=0;
 	// Use this for initialization
 	void Start () {
@@ -18,13 +19,16 @@ public class fruitcontrol : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (timing>0) timing -= Time.deltaTime;
-		else{
-			cont+=1;
-			Debug.Log(cont);
-			gameObject.transform.position = new Vector2(Random.Range(-rango,rango),gameObject.transform.position.y);
-			Instantiate(fruta,gameObject.transform.position,gameObject.transform.rotation);
-			timing = bpm;
+		if (cont<totalcount)
+		{
+			if (timing>0) timing -= Time.deltaTime;
+			else{
+				cont+=1;
+				Debug.Log(cont);
+				gameObject.transform.position = new Vector2(Random.Range(-rango,rango),gameObject.transform.position.y);
+				Instantiate(fruta,gameObject.transform.position,gameObject.transform.rotation);
+				timing = bpm;
+			}
 		}
 	}
 }
