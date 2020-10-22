@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class fruitcontrol : MonoBehaviour {
-	public GameObject fruta;
+	[SerializeField]
+	public GameObject[] frutas;
+	private int randonPrefab;
 	public float tempo = 65f;
 	public float offset = 3f;
 	public float rango = 7f;
@@ -26,7 +28,8 @@ public class fruitcontrol : MonoBehaviour {
 				cont+=1;
 				Debug.Log(cont);
 				gameObject.transform.position = new Vector2(Random.Range(-rango,rango),gameObject.transform.position.y);
-				Instantiate(fruta,gameObject.transform.position,gameObject.transform.rotation);
+				randonPrefab = Random.Range(0,frutas.Length);
+				Instantiate(frutas[randonPrefab],gameObject.transform.position,gameObject.transform.rotation);
 				timing = bpm;
 			}
 		}
