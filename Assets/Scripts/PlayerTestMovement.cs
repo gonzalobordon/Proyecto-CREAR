@@ -10,6 +10,7 @@ public class PlayerTestMovement : MonoBehaviour {
 	public float limitposy = 7f;
 	public Animator anim;
 	public bool omnidir = false;
+	public bool endless = false;
 	// Use this for initialization
 	void Start () {
 		anim=GetComponent<Animator>();
@@ -18,12 +19,15 @@ public class PlayerTestMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetAxis("Horizontal")!=0)anim.SetBool("run",true);	else anim.SetBool("run",false);
-		if(Input.GetAxis("Horizontal")>0) pj.localScale = new Vector2(1,1);
-		if(Input.GetAxis("Horizontal")<0) pj.localScale = new Vector2(-1,1);
-		if(Input.GetAxis("Vertical")>0 & omnidir==true)anim.SetBool("up",true); else anim.SetBool("up",false);
-		if(Input.GetAxis("Vertical")<0 & omnidir==true)anim.SetBool("down",true); else anim.SetBool("down",false);
-		if (omnidir) pj.position = new Vector2(Mathf.Clamp(pj.position.x + Input.GetAxis("Horizontal")*(speed/10),-limitposx,limitposx) ,Mathf.Clamp(pj.position.y + Input.GetAxis("Vertical")*(speed/10),-limitposy,limitposy));
-		else pj.position = new Vector2(Mathf.Clamp(pj.position.x + Input.GetAxis("Horizontal")*(speed/10),-limitposx,limitposx) ,pj.position.y);
+		if (endless==false)
+		{
+			if(Input.GetAxis("Horizontal")!=0)anim.SetBool("run",true);	else anim.SetBool("run",false);
+			if(Input.GetAxis("Horizontal")>0) pj.localScale = new Vector2(1,1);
+			if(Input.GetAxis("Horizontal")<0) pj.localScale = new Vector2(-1,1);
+			if(Input.GetAxis("Vertical")>0 & omnidir==true)anim.SetBool("up",true); else anim.SetBool("up",false);
+			if(Input.GetAxis("Vertical")<0 & omnidir==true)anim.SetBool("down",true); else anim.SetBool("down",false);
+			if (omnidir) pj.position = new Vector2(Mathf.Clamp(pj.position.x + Input.GetAxis("Horizontal")*(speed/10),-limitposx,limitposx) ,Mathf.Clamp(pj.position.y + Input.GetAxis("Vertical")*(speed/10),-limitposy,limitposy));
+				else pj.position = new Vector2(Mathf.Clamp(pj.position.x + Input.GetAxis("Horizontal")*(speed/10),-limitposx,limitposx) ,pj.position.y);	
+		}else anim.SetBool("run",true);
 	}
 }
