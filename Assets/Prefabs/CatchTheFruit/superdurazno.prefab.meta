@@ -1,16 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: 863bcfa77dda7b540a4dacefe3b8c265
 timeCreated: 1603593733
-=======
-<<<<<<< Updated upstream:Assets/Prefabs/Character.prefab.meta
-guid: 24f6cde9a078b894abec1f1aebd42ae8
-timeCreated: 1603662619
-=======
-guid: 863bcfa77dda7b540a4dacefe3b8c265
-timeCreated: 1603593733
->>>>>>> Stashed changes:Assets/Prefabs/CatchTheFruit/superdurazno.prefab.meta
->>>>>>> Stashed changes
 licenseType: Free
 NativeFormatImporter:
   mainObjectFileID: 100100000
