@@ -5,31 +5,33 @@ using UnityEngine;
 public class fruitcontrol : MonoBehaviour {
 	[SerializeField]
 	public GameObject[] frutas;
-	private int randonPrefab;
+	private int randomPrefab;
 	public float tempo = 65f;
 	public float offset = 3f;
-	public float rango = 7f;
-	public float bpm;
-	public float timing;
+	public float rangoX = 7f;
+	public float rangoY = 0f;
+	private float bpm;
+	private float timing;
 	public int totalcount = 150;
 	public int cont=0;
-	// Use this for initialization
+
 	void Start () {
 		bpm = 60/tempo;
 		timing = bpm + offset;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (cont<totalcount)
 		{
 			if (timing>0) timing -= Time.deltaTime;
 			else{
 				cont+=1;
-				Debug.Log(cont);
-				gameObject.transform.position = new Vector2(Random.Range(-rango,rango),gameObject.transform.position.y);
-				randonPrefab = Random.Range(0,frutas.Length);
-				Instantiate(frutas[randonPrefab],gameObject.transform.position,gameObject.transform.rotation);
+				//Debug.Log(cont);
+				randomPrefab = Random.Range(0,frutas.Length);
+				Instantiate(
+					frutas[randomPrefab], 
+					new Vector2(Random.Range(gameObject.transform.position.x-rangoX,gameObject.transform.position.x+rangoX),Random.Range(gameObject.transform.position.y-rangoY,gameObject.transform.position.y+rangoY)),
+					gameObject.transform.rotation);
 				timing = bpm;
 			}
 		}

@@ -1,11 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 2a7d954de0d86234fb7a6750152fcf7b
-timeCreated: 1603467818
-=======
-guid: 571f4b8335e6db14f8985e3f26939771
-timeCreated: 1603768360
->>>>>>> Gonzo
+guid: 7e7273de25fa69c4886b99c012b18bd7
+timeCreated: 1603760425
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
