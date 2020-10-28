@@ -3,30 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTestMovement : MonoBehaviour {
-
-	public Transform pj;
-	public float speed = 1f;
-	public float limitposx = 16f;
-	public float limitposy = 7f;
-	//public Animator anim;
-	public bool omnidir = false;
-	// Use this for initialization
-	void Start () {
-		//anim=GetComponent<Animator>();
-		pj=GetComponent<Transform>();
+	private PlayerController lateral;
+	private Scroll run;
+	private TopDown aero;
+	void Start(){
+		lateral = GetComponent<PlayerController>();
+		run = GetComponent<Scroll>();
+		aero = GetComponent<TopDown>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		//if(Input.GetAxis("Horizontal")!=0)anim.SetBool("run",true);	else anim.SetBool("run",false);
-		if(Input.GetAxis("Horizontal")>0) pj.localScale = new Vector2(1,1);			
-		if(Input.GetAxis("Horizontal")<0) pj.localScale = new Vector2(-1,1);
-		pj.position = new Vector2(Mathf.Clamp(pj.position.x + Input.GetAxis("Horizontal")*(speed/10),-limitposx,limitposx) ,pj.position.y);	
-
-		if (omnidir==true){
-		//	if(Input.GetAxis("Vertical")>0)anim.SetBool("up",true); else anim.SetBool("up",false);
-		//	if(Input.GetAxis("Vertical")<0)anim.SetBool("down",true); else anim.SetBool("down",false);
-			pj.position = new Vector2(pj.position.x,Mathf.Clamp(pj.position.y + Input.GetAxis("Vertical")*(speed/10),-limitposy,limitposy));
-		} 
+	void OnTriggerEnter2D(Collider2D other){
+		switch (other.gameObject.tag)
+		{
+			case "Scroll" :
+				lateral.enabled = true;
+				run.enabled = false;
+				aero.enabled = false;
+			break;
+			case "Runner" :
+				lateral.enabled = false;
+				run.enabled = true;
+				aero.enabled = false;
+			break;
+			case "TopDown" :
+				lateral.enabled = false;
+				run.enabled = false;
+				aero.enabled = true;
+			break;
+			
+		}
 	}
 }

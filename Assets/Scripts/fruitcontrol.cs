@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class fruitcontrol : MonoBehaviour {
 	[SerializeField]
@@ -14,6 +15,10 @@ public class fruitcontrol : MonoBehaviour {
 	private float timing;
 	public int totalcount = 150;
 	public int cont=0;
+
+	public bool exitscene = false;
+	public string sceneout = "Prado";
+	public float outoffset = 4f;
 
 	void Start () {
 		bpm = 60/tempo;
@@ -33,6 +38,15 @@ public class fruitcontrol : MonoBehaviour {
 					new Vector2(Random.Range(gameObject.transform.position.x-rangoX,gameObject.transform.position.x+rangoX),Random.Range(gameObject.transform.position.y-rangoY,gameObject.transform.position.y+rangoY)),
 					gameObject.transform.rotation);
 				timing = bpm;
+			}
+		}else
+		{
+			if (exitscene)
+			{
+				if (outoffset>0)
+				{
+					outoffset -= Time.deltaTime;
+				}else SceneManager.LoadScene(sceneout,LoadSceneMode.Single);
 			}
 		}
 	}
