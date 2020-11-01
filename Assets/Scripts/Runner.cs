@@ -53,7 +53,7 @@ public class Runner : MonoBehaviour {
 		rb.velocity = new Vector2(Input.GetAxis("Horizontal")*speed[modo],rb.velocity.y);
 		switch (modo)
 		{
-			case 0:	if (Input.GetButton("Jump") && enPiso) rb.velocity = new Vector2(rb.velocity.x,jump[modo]);
+			case 0:	if (Input.GetButtonDown("Jump") && enPiso) rb.velocity = new Vector2(rb.velocity.x,jump[modo]);
 					if(Input.GetAxis("Horizontal")>0) spr.flipX = false;
 					if(Input.GetAxis("Horizontal")<0) spr.flipX = true;
 					if (enPiso && Input.GetAxis("Horizontal")!=0) anim.SetBool("run",true);
