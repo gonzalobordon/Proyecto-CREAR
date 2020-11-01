@@ -22,14 +22,22 @@ public class fruit : MonoBehaviour {
 
 [CustomEditor(typeof(fruit))]
 public class fruitEditor : Editor{
-
-    public override void OnInspectorGUI()
+	public bool desplegar;
+    override public void OnInspectorGUI()
     {
         var fruit = target as fruit;
+		EditorGUILayout.BeginVertical();
+		EditorGUILayout.LabelField("Velocidad de Movimiento de fruta");
+		EditorGUILayout.Space();
 		fruit.speedX = EditorGUILayout.Slider("X",fruit.speedX,-0.25f,0.25f);
 		fruit.speedY = EditorGUILayout.Slider("Y",fruit.speedY,-0.25f,0.25f);
 		fruit.speedrot = EditorGUILayout.Slider("Rotacion",fruit.speedrot,-10f,10f);
-		fruit.deleteable = GUILayout.Toggle(fruit.deleteable,"Autodestruccion");
-		if (fruit.deleteable) fruit.lifetime = EditorGUILayout.FloatField("Conteo Regresivo",fruit.lifetime);
+		desplegar = EditorGUILayout.Foldout(desplegar,"Opciones");
+		if (desplegar)
+		{
+			fruit.deleteable = GUILayout.Toggle(fruit.deleteable,"Autodestruccion");
+		if (fruit.deleteable) fruit.lifetime = EditorGUILayout.FloatField("Conteo Regresivo",fruit.lifetime);	
+		}
+		EditorGUILayout.EndVertical();
     }
 }

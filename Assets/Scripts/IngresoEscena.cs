@@ -47,7 +47,6 @@ public class IngresoEscenaEditor : Editor{
 	public string[] inputs = new string[]{
 		"Fire1","Fire2","Fire3","Jump"
 	};
-	private GUILayoutOption[] options = {GUILayout.MaxWidth(150.0f),GUILayout.MinWidth(80.0f)};
 	override public void OnInspectorGUI(){
 		var IngresoEscena = target as IngresoEscena;
 
